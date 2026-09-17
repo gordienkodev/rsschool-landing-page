@@ -16,7 +16,7 @@
     --color-theme-toggle-active-bg: #B0907A;
     --color-theme-toggle-icon: #403F3D;
     --color-theme-toggle-active-icon: #E1D4C9;
-    --color-tab-active-bg: #403F3D;
+    --color-tab-active-bg: #665F55;
     --color-tab-active-text: #E1D4C9;
     --color-tab-active-icon-bg: #E1D4C9;
     --color-overlay: rgba(0, 0, 0, 0.8);
@@ -45,6 +45,7 @@ html[data-theme="dark"] {
     --color-tab-active-icon-bg: #665F55;
     --color-overlay: rgba(0, 0, 0, 0.72);
 }
+
 html {
     box-sizing: border-box;
     scroll-behavior: smooth;
@@ -1005,7 +1006,7 @@ html[data-theme="dark"] .popup__cost-info img {
     line-height: 14px;
     word-wrap: break-word
 }
-  
+
 .popup__close {
     display: flex;
     align-items: center;
@@ -1021,12 +1022,12 @@ html[data-theme="dark"] .popup__cost-info img {
     line-height: 24px;
 }
 
-.popup__sizes{
+.popup__sizes {
     display: flex;
     gap: 8px;
 }
 
-.popup__size{
+.popup__size {
     display: flex;
     gap: 8px;
     align-items: center;
@@ -1042,12 +1043,12 @@ html[data-theme="dark"] .popup__cost-info img {
     line-height: 24px;
 }
 
-.popup__additives{
+.popup__additives {
     display: flex;
     gap: 8px;
 }
 
-.popup__additive{
+.popup__additive {
     display: flex;
     gap: 8px;
     align-items: center;
