@@ -12,8 +12,8 @@
     --color-control-track: #C1B6AD;
     --color-control-fill: #665F55;
     --color-theme-toggle-bg: #E1D4C9;
-    --color-theme-toggle-border: #665F55;
-    --color-theme-toggle-active-bg: #665F55;
+    --color-theme-toggle-border: #C1B6AD;
+    --color-theme-toggle-active-bg: #B0907A;
     --color-theme-toggle-icon: #403F3D;
     --color-theme-toggle-active-icon: #E1D4C9;
     --color-tab-active-bg: #403F3D;
@@ -175,6 +175,10 @@ header {
 .theme-toggle__button[data-theme-toggle="dark"] .theme-toggle__icon {
     fill: currentColor;
     stroke: none;
+}
+
+.theme-toggle__button[data-theme-toggle="light"] .theme-toggle__icon circle {
+    fill: currentColor;
 }
 
 html[data-theme="dark"] .menu-item::after,
