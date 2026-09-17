@@ -4,6 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        (() => {
+            const theme = localStorage.getItem('coffee-house-theme');
+
+            if (theme === 'dark' || theme === 'light') {
+                document.documentElement.dataset.theme = theme;
+            }
+        })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
@@ -17,7 +26,7 @@
     <header class="header">
         <div class="container header__inner">
             <a href="../index.html" class="logo">
-                <img src="images/logo.png" alt="Main" class="logo__img">
+                <img src="images/logo.png" data-logo-light="images/logo.png" data-logo-dark="../images/logo-dark.png" alt="Main" class="logo__img">
             </a>
             <nav class="menu">
                 <ul class="menu__list">
@@ -38,6 +47,19 @@
                 <li class="burger__menu__list-item"><a href="./index.html" class="burger__menu-item">Menu <img
                             src="./images/coffee-cup.svg" alt="Cup" class="burger__menu-item-image"></a></li>
             </ul>
+            <div class="theme-toggle" role="group" aria-label="Color theme">
+                <button class="theme-toggle__button" type="button" data-theme-toggle="light" aria-label="Use light theme" aria-pressed="true">
+                    <svg class="theme-toggle__icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+                    </svg>
+                </button>
+                <button class="theme-toggle__button" type="button" data-theme-toggle="dark" aria-label="Use dark theme" aria-pressed="false">
+                    <svg class="theme-toggle__icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M21 12.79A8.5 8.5 0 1 1 11.21 3 6.5 6.5 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
             <div class="menu-item-underline">Menu</div>
             <div class="hamburger">
                 <div class="hamburger__line"></div>
@@ -225,6 +247,7 @@
             </div>
         </div>
     </div>
+    <script src="../theme.js"></script>
     <script src="./main.js"></script>
 </body>
 
