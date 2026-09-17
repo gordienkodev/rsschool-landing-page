@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon">
+    <title>Menu &gt; Coffee</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/normalize.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header__inner">
+            <a href="../index.html" class="logo">
+                <img src="images/logo.png" alt="Main" class="logo__img">
+            </a>
+            <nav class="menu">
+                <ul class="menu__list">
+                    <li class="menu__list-item"><a href="../index.html#favorite" class="menu__list-link">Favorite
+                            coffee</a></li>
+                    <li class="menu__list-item"><a href="../index.html#about" class="menu__list-link">About</a></li>
+                    <li class="menu__list-item"><a href="../index.html#app" class="menu__list-link">Mobile app</a></li>
+                    <li class="menu__list-item"><a href="#contact" class="menu__list-link">Contact us</a></li>
+                </ul>
+            </nav>
+            <ul class="burger__menu__list">
+                <li class="burger__menu__list-item"><a href="../index.html#favorite" class="menu__list-link">Favorite
+                        coffee</a></li>
+                <li class="burger__menu__list-item"><a href="../index.html#about" class="menu__list-link">About</a></li>
+                <li class="burger__menu__list-item"><a href="../index.html#app" class="menu__list-link">Mobile app</a>
+                </li>
+                <li class="burger__menu__list-item"><a href="#contact" class="menu__list-link">Contact us</a></li>
+                <li class="burger__menu__list-item"><a href="./index.html" class="burger__menu-item">Menu <img
+                            src="./images/coffee-cup.svg" alt="Cup" class="burger__menu-item-image"></a></li>
+            </ul>
+            <div class="menu-item-underline">Menu</div>
+            <div class="hamburger">
+                <div class="hamburger__line"></div>
+                <div class="hamburger__line"></div>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <section class="main-offer">
+            <div class="container">
+                <div class="main-offer__content">
+                    <div class="main-offer__content-item">
+                        <h1 class="main-offer__title">Behind each of our cups hides an <span
+                                class="important__title">amazing surprise</span></h1>
+                    </div>
+                    <div class="main-offer__content-item">
+                        <div class="main-offer__content-item-tab-active coffee">
+                            <div class="main-offer__content-item-tab-image-active"><img src="images/tab-item1.png"
+                                    alt="Coffee"></div>
+                            <div class="main-offer__content-item-text-active">Coffee</div>
+                        </div>
+                        <div class="main-offer__content-item-tab tea">
+                            <div class="main-offer__content-item-tab-image">
+                                <img src="images/tab-item2.png" alt="Tea">
+                            </div>
+                            <div class="main-offer__content-item-text">Tea</div>
+                        </div>
+                        <div class="main-offer__content-item-tab dessert">
+                            <div class="main-offer__content-item-tab-image">
+                                <img src="images/tab-item3.png" alt="Dessert">
+                            </div>
+                            <div class="main-offer__content-item-text">Dessert</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="category">
+            <div class="ref-navigation">
+                <h2>category</h2>
+            </div>
+            <div class="container category__contents">
+                <div class="category__content category__content-hide"> <!--
+                    <div class="category__content-item">
+                        <img class="category__content-item-image" src="images/coffee-1.jpg" alt="Product Image">
+                        <div class="category__content-item-text">
+                            <div class="category__content-item-title">Irish coffee</div>
+                            <div class="category__content-item-description">Fragrant black coffee with Jameson Irish
+                                whiskey and whipped milk</div>
+                            <div class="category__content-item-price">$7.00</div>
+                        </div>
+                    </div>
+                    <div class="category__content-item">
+                        <img class="category__content-item-image" src="images/coffee-2.jpg" alt="Product Image">
+                        <div class="category__content-item-text">
+                            <div class="category__content-item-title">Kahlua coffee</div>
+                            <div class="category__content-item-description">Classic coffee with milk and Kahlua liqueur under a cap of frothed milk</div>
+                            <div class="category__content-item-price">$7.00</div>
+                        </div>
+                    </div>
+                    <div class="category__content-item">
+                        <img class="category__content-item-image" src="images/coffee-3.jpg" alt="Product Image">
+                        <div class="category__content-item-text">
+                            <div class="category__content-item-title">Honey raf</div>
+                            <div class="category__content-item-description">Espresso with frothed milk, cream and aromatic honey</div>
+                            <div class="category__content-item-price">$5.50</div>
+                        </div>
+                    </div>
+                    <div class="category__content-item">
+                        <img class="category__content-item-image" src="images/coffee-4.jpg" alt="Product Image">
+                        <div class="category__content-item-text">
+                            <div class="category__content-item-title">Ice cappuccino</div>
+                            <div class="category__content-item-description">Cappuccino with soft thick foam in summer version with ice</div>
+                            <div class="category__content-item-price">$5.00</div>
+                        </div>
+
+                    </div>
+                    <div class="category__content-item">
+                        <img class="category__content-item-image" src="images/coffee-5.jpg" alt="Product Image">
+                        <div class="category__content-item-text">
+                            <div class="category__content-item-title">Espresso</div>
+                            <div class="category__content-item-description">Classic black coffee</div>
+                            <div class="category__content-item-price">$4.50</div>
+                        </div>
+
+                    </div>
+                    <div class="category__content-item">
+                        <img class="category__content-item-image" src="images/coffee-6.jpg" alt="Product Image">
+                        <div class="category__content-item-text">
+                            <div class="category__content-item-title">Latte</div>
+                            <div class="category__content-item-description">Espresso coffee with the addition of steamed milk and dense milk foam</div>
+                            <div class="category__content-item-price">$5.50</div>
+                        </div>
+                    </div>
+                    <div class="category__content-item">
+                        <img class="category__content-item-image" src="images/coffee-7.jpg" alt="Product Image">
+                        <div class="category__content-item-text">
+                            <div class="category__content-item-title">Latte macchiato</div>
+                            <div class="category__content-item-description">Espresso with frothed milk and chocolate</div>
+                            <div class="category__content-item-price">$5.50</div>
+                        </div>
+                    </div>
+                    <div class="category__content-item">
+                        <img class="category__content-item-image" src="images/coffee-8.jpg" alt="Product Image">
+                        <div class="category__content-item-text">
+                            <div class="category__content-item-title">Coffee with cognac</div>
+                            <div class="category__content-item-description">Fragrant black coffee with cognac and whipped cream</div>
+                            <div class="category__content-item-price">$6.50</div>
+                        </div>
+                    </div>
+                    -->
+                </div>
+                <div class="refresh-button">
+                    <div class="refresh-button-link"><img src="images/refresh.png" alt="refresh"
+                            class="refresh-button-image"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container"><a id="contact">
+                <div class="ref-navigation">contact</div>
+            </a>
+            <div class="footer__inner">
+                <div class="offer">
+                    <h2 class="footer__title">Sip, Savor, Smile. <span class="important__title">It’s coffee
+                            time!</span></h2>
+                    <div>
+                        <ul class="footer__social">
+                            <li class="footer__social-item"><a href="#" class="footer__social-link"><img
+                                        src="images/twitter.svg" alt="twitter" class="footer__social-img"></a></li>
+                            <li class="footer__social-item"><a href="#" class="footer__social-link"><img
+                                        src="images/instagram.svg" alt="instagram" class="footer__social-img"></a></li>
+                            <li class="footer__social-item"><a href="#" class="footer__social-link"><img
+                                        src="images/facebook.svg" alt="facebook" class="footer__social-img"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__contacts">
+                    <div class="footer__title-contacts">Contact us</div>
+                    <div class="footer__title-contacts-text">
+                        <a href="https://www.google.com/maps?q=Green+Rd.,+LA" target="_blank"
+                            class="address footer__contacts-item">8558 Green Rd., LA</a>
+                        <a href="tel:+1(603)5550123"
+                            class="phone footer__contacts-item">+1&nbsp;(603)&nbsp;555&ndash;0123</a>
+                        <div class="schedule">Mon-Sat: 9:00 AM – 23:00 PM</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="popup">
+        <div class="popup__content">
+            <div class="popup__image-container">
+                <!-- <img src="./images/coffee-1.jpg" class="popup__image" alt="coffee"> -->
+            </div>
+            <div class="popup__description">
+                <div class="popup__title">Kahlua coffee</div>
+                <div class="popup__text">Classic coffee with milk and Kahlua liqueur under a cap of frothed milk</div>
+                <div>Size</div>
+                <div class="popup__sizes">
+                    <div class="popup__size">S 200 ml</div>
+                    <div class="popup__size">M 300 ml</div>
+                    <div class="popup__size">L 400 ml</div>
+                </div>
+                <div>Additives</div>
+                <div class="popup__additives">
+                    <div class="popup__additive">1 Sugar</div>
+                    <div class="popup__additive">2 Cinnamon</div>
+                    <div class="popup__additive">3 Syrup</div>
+                </div>
+                <div class="popup__total">
+                    <div>Total:</div>
+                    <div class="popup__cost">$7.00</div>
+                </div>
+                <div class="popup__cost-info">
+                    <img src="./images/info-empty.svg" alt="alert">
+                    <div class="popup__cost-info-text">The cost is not final. Download our mobile app to see the final
+                        price and place your order. Earn loyalty points and enjoy your favorite coffee with up to 20%
+                        discount.
+                    </div>
+                </div>
+                <div class="popup__close">Close</div>
+            </div>
+        </div>
+    </div>
+    <script src="./main.js"></script>
+</body>
+
+</html>
