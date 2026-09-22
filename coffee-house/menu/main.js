@@ -213,7 +213,7 @@ function getCategoryItems () {
                         const image = document.createElement('img');
                         image.classList.add('popup__image');
                         image.src = itemImage.src;
-                        image.alt = items.name;
+                        image.alt = element.name;
 
                         const description = document.querySelector('.popup__description');
 
