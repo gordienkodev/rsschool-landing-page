@@ -165,15 +165,25 @@ refreshButton.addEventListener('click', () => {
 const popupButton = document.querySelector('.popup__close');
 const popup = document.querySelector('.popup');
 
-popupButton.addEventListener('click', () => {
+const closePopup = () => {
     popup.style.display = 'none';
+};
+
+popupButton.addEventListener('click', () => {
+    closePopup();
 })
 
 popup.addEventListener('click', (event) => {
     if (event.target === popup) {
-        popup.style.display = 'none';
+        closePopup();
     }
 })
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && popup.style.display === 'block') {
+        closePopup();
+    }
+});
 
 //popup category items
 function getCategoryItems () {
