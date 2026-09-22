@@ -165,8 +165,14 @@ refreshButton.addEventListener('click', () => {
 const popupButton = document.querySelector('.popup__close');
 const popup = document.querySelector('.popup');
 
+const openPopup = () => {
+    popup.style.display = 'block';
+    document.body.classList.add('scroll-lock');
+};
+
 const closePopup = () => {
     popup.style.display = 'none';
+    document.body.classList.remove('scroll-lock');
 };
 
 popupButton.addEventListener('click', () => {
@@ -192,7 +198,7 @@ function getCategoryItems () {
         //console.log(categoryContentItems);
         categoryContentItems.forEach(element => {
             element.addEventListener('click', (event) => {
-                popup.style.display = 'block';
+                openPopup();
                 //console.log('click');
                 const clickedElement = event.currentTarget;
                 const elementClasses = clickedElement.classList;
