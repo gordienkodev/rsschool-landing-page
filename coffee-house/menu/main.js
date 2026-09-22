@@ -35,6 +35,7 @@ document.addEventListener('keydown', (event) => {
 //category
 let data;
 const categoryContent = document.querySelector('.category__content');
+const categoryTabs = document.querySelectorAll('.main-offer__content-item-tab, .main-offer__content-item-tab-active');
 
 const jsonFilePath = `./products.json`;
 
@@ -55,6 +56,21 @@ async function loadJSON() {
 }
 
 loadJSON();
+
+const updateActiveCategoryTab = (activeTab) => {
+    categoryTabs.forEach((tab) => {
+        const isActive = tab === activeTab;
+        const tabImage = tab.querySelector('.main-offer__content-item-tab-image, .main-offer__content-item-tab-image-active');
+        const tabText = tab.querySelector('.main-offer__content-item-text, .main-offer__content-item-text-active');
+
+        tab.classList.toggle('main-offer__content-item-tab-active', isActive);
+        tab.classList.toggle('main-offer__content-item-tab', !isActive);
+        tabImage.classList.toggle('main-offer__content-item-tab-image-active', isActive);
+        tabImage.classList.toggle('main-offer__content-item-tab-image', !isActive);
+        tabText.classList.toggle('main-offer__content-item-text-active', isActive);
+        tabText.classList.toggle('main-offer__content-item-text', !isActive);
+    });
+};
 
 const loadData = (data, categoryItems) => {
     categoryContent.innerHTML = '';
@@ -104,6 +120,7 @@ getCategoryItems();
 const menuCoffee = document.querySelector('.coffee');
 //console.log(menuCoffee);
 menuCoffee.addEventListener('click', () => {
+    updateActiveCategoryTab(menuCoffee);
     loadData(data, 'coffee');
     getCategoryItems();
 })
@@ -112,6 +129,7 @@ menuCoffee.addEventListener('click', () => {
 const menuTea = document.querySelector('.tea');
 //console.log(menuTea);
 menuTea.addEventListener('click', () => {
+    updateActiveCategoryTab(menuTea);
     loadData(data, 'tea');
     getCategoryItems();
 })
@@ -120,6 +138,7 @@ menuTea.addEventListener('click', () => {
 const menuDessert = document.querySelector('.dessert');
 //console.log(menuDessert);
 menuDessert.addEventListener('click', () => {
+    updateActiveCategoryTab(menuDessert);
     loadData(data, 'dessert');
     getCategoryItems();
 })
