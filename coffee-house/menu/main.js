@@ -141,17 +141,17 @@ function getCategoryItems () {
                 //console.log('click');
                 const clickedElement = event.currentTarget;
                 const elementClasses = clickedElement.classList;
-                console.log(clickedElement);
-                console.log(elementClasses);
+                //console.log(clickedElement);
+                //console.log(elementClasses);
                 //тут нужно собирать попап и наполнять его данными нужен метод по вытягиванию данных с джейсона
-                console.log(data);
+                //console.log(data);
                 const itemTitle = clickedElement.querySelector('.category__content-item-title');
                 const itemImage = clickedElement.querySelector('.category__content-item-image');
                 data.forEach(element => {
                     if(element.name === itemTitle.textContent){
-                        console.log(element.name);
-                        console.log(element.price);
-                        console.log(itemImage.src);
+                        //console.log(element.name);
+                        //console.log(element.price);
+                        //console.log(itemImage.src);
 
                         //собираем попап
                         const popupСontent = document.querySelector('.popup__content');
