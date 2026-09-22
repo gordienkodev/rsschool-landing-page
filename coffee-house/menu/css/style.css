@@ -1043,18 +1043,13 @@ html[data-theme="dark"] .popup__cost-info img {
     text-align: center;
     border: 1px var(--color-text-primary) solid;
     border-radius: 100px;
-    width: 116px;
+    min-width: 116px;
     height: 46px;
+    padding: 0 16px 0 8px;
     color: var(--color-text-primary);
     font-size: 16px;
     font-weight: 600;
     line-height: 24px;
-}
-
-.popup__size:first-child {
-    border-color: var(--color-border-strong);
-    color: var(--color-text-inverse);
-    background-color: var(--color-border-strong);
 }
 
 .popup__option-label {
@@ -1066,10 +1061,6 @@ html[data-theme="dark"] .popup__cost-info img {
     border-radius: 100%;
     background-color: var(--color-border-soft);
     color: var(--color-text-primary);
-}
-
-.popup__size:first-child .popup__option-label {
-    background-color: var(--color-bg-primary);
 }
 
 .popup__additives {
@@ -1086,12 +1077,30 @@ html[data-theme="dark"] .popup__cost-info img {
     text-align: center;
     border: 1px var(--color-text-primary) solid;
     border-radius: 100px;
-    width: 116px;
+    min-width: 116px;
     height: 46px;
+    padding: 0 16px 0 8px;
     color: var(--color-text-primary);
     font-size: 16px;
     font-weight: 600;
     line-height: 24px;
+}
+
+.popup__size,
+.popup__additive {
+    cursor: pointer;
+    background-color: transparent;
+    font: inherit;
+}
+
+.popup__option-active {
+    border-color: var(--color-border-strong);
+    color: var(--color-text-inverse);
+    background-color: var(--color-border-strong);
+}
+
+.popup__option-active .popup__option-label {
+    background-color: var(--color-bg-primary);
 }
 
 @media(max-width:768px) {
