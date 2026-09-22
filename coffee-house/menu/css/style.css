@@ -785,13 +785,15 @@ html[data-theme="dark"] .popup__cost-info img {
     height: 506px;
     border: 1px solid var(--color-border-soft);
     border-radius: 40px;
+    overflow: hidden;
 }
 
 .category__content-item-image {
+    display: block;
     width: 100%;
-    max-height: 310px;
-    object-fit: contain;
-    border-radius: 40px
+    height: 310px;
+    object-fit: cover;
+    border-radius: 40px;
 }
 
 .category__content-item-text {
@@ -1024,10 +1026,12 @@ html[data-theme="dark"] .popup__cost-info img {
     font-size: 16px;
     font-weight: 600;
     line-height: 24px;
+    flex-shrink: 0;
 }
 
 .popup__sizes {
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
 }
 
@@ -1049,6 +1053,7 @@ html[data-theme="dark"] .popup__cost-info img {
 
 .popup__additives {
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
 }
 
@@ -1132,6 +1137,22 @@ html[data-theme="dark"] .popup__cost-info img {
     .hamburger_open {
         gap: 0px;
         padding: 20px;
+    }
+}
+
+@media(max-width:767px) {
+    .popup {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .popup__content {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .popup__image-container {
+        display: none;
     }
 }
 
