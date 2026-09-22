@@ -72,6 +72,11 @@ const updateActiveCategoryTab = (activeTab) => {
     });
 };
 
+const resetCategoryCardsView = () => {
+    categoryContent.classList.add('category__content-hide');
+    refreshButton.style.display = '';
+};
+
 const loadData = (data, categoryItems) => {
     categoryContent.innerHTML = '';
     let i = 1;
@@ -121,6 +126,7 @@ const menuCoffee = document.querySelector('.coffee');
 //console.log(menuCoffee);
 menuCoffee.addEventListener('click', () => {
     updateActiveCategoryTab(menuCoffee);
+    resetCategoryCardsView();
     loadData(data, 'coffee');
     getCategoryItems();
 })
@@ -130,6 +136,7 @@ const menuTea = document.querySelector('.tea');
 //console.log(menuTea);
 menuTea.addEventListener('click', () => {
     updateActiveCategoryTab(menuTea);
+    resetCategoryCardsView();
     loadData(data, 'tea');
     getCategoryItems();
 })
@@ -139,6 +146,7 @@ const menuDessert = document.querySelector('.dessert');
 //console.log(menuDessert);
 menuDessert.addEventListener('click', () => {
     updateActiveCategoryTab(menuDessert);
+    resetCategoryCardsView();
     loadData(data, 'dessert');
     getCategoryItems();
 })
