@@ -169,6 +169,12 @@ popupButton.addEventListener('click', () => {
     popup.style.display = 'none';
 })
 
+popup.addEventListener('click', (event) => {
+    if (event.target === popup) {
+        popup.style.display = 'none';
+    }
+})
+
 //popup category items
 function getCategoryItems () {
     setTimeout(() =>{
