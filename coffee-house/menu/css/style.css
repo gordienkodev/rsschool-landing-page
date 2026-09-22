@@ -70,6 +70,10 @@ body {
         color 0.2s ease;
 }
 
+body.scroll-lock {
+    overflow: hidden;
+}
+
 a {
     text-decoration: none;
     color: inherit;

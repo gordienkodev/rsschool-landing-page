@@ -8,6 +8,7 @@ menuBtn.addEventListener('click', () => {
     hamburgerLines[0].classList.toggle('hamburger__line-one-active');
     hamburgerLines[1].classList.toggle('hamburger__line-two-active');
     menuBtn.classList.toggle('hamburger_open');
+    document.body.classList.toggle('scroll-lock');
 })
 
 mobileMenuItems.forEach(element => {
@@ -16,6 +17,7 @@ mobileMenuItems.forEach(element => {
         hamburgerLines[0].classList.remove('hamburger__line-one-active');
         hamburgerLines[1].classList.remove('hamburger__line-two-active');
         menuBtn.classList.remove('hamburger_open');
+        document.body.classList.remove('scroll-lock');
     })
 });
 
