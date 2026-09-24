@@ -936,6 +936,41 @@ html[data-theme="dark"] .burger__menu-item-image {
         line-height: 40px;
     }
 
+    .favorite__slider {
+        justify-content: center;
+    }
+
+    .slider__wrapper {
+        width: calc(100vw - 32px);
+    }
+
+    .slider {
+        gap: 0;
+    }
+
+    .slider-two {
+        transform: translateX(calc(-1 * (100vw - 32px)));
+    }
+
+    .slider-three {
+        transform: translateX(calc(-2 * (100vw - 32px)));
+    }
+
+    .slider-card {
+        width: calc(100vw - 32px);
+        flex: 0 0 calc(100vw - 32px);
+    }
+
+    .slider-card-item {
+        max-width: calc(100vw - 32px);
+        text-align: center;
+    }
+
+    .slider-image {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     .important__title-small {
 
         font-size: 32px;
