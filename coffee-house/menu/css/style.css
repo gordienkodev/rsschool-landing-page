@@ -70,6 +70,10 @@ body {
         color 0.2s ease;
 }
 
+body.scroll-lock {
+    overflow: hidden;
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -781,13 +785,15 @@ html[data-theme="dark"] .popup__cost-info img {
     height: 506px;
     border: 1px solid var(--color-border-soft);
     border-radius: 40px;
+    overflow: hidden;
 }
 
 .category__content-item-image {
+    display: block;
     width: 100%;
-    max-height: 310px;
-    object-fit: contain;
-    border-radius: 40px
+    height: 310px;
+    object-fit: cover;
+    border-radius: 40px;
 }
 
 .category__content-item-text {
@@ -1020,10 +1026,12 @@ html[data-theme="dark"] .popup__cost-info img {
     font-size: 16px;
     font-weight: 600;
     line-height: 24px;
+    flex-shrink: 0;
 }
 
 .popup__sizes {
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
 }
 
@@ -1035,16 +1043,29 @@ html[data-theme="dark"] .popup__cost-info img {
     text-align: center;
     border: 1px var(--color-text-primary) solid;
     border-radius: 100px;
-    width: 116px;
+    min-width: 116px;
     height: 46px;
+    padding: 0 16px 0 8px;
     color: var(--color-text-primary);
     font-size: 16px;
     font-weight: 600;
     line-height: 24px;
 }
 
+.popup__option-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    background-color: var(--color-border-soft);
+    color: var(--color-text-primary);
+}
+
 .popup__additives {
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
 }
 
@@ -1056,12 +1077,30 @@ html[data-theme="dark"] .popup__cost-info img {
     text-align: center;
     border: 1px var(--color-text-primary) solid;
     border-radius: 100px;
-    width: 116px;
+    min-width: 116px;
     height: 46px;
+    padding: 0 16px 0 8px;
     color: var(--color-text-primary);
     font-size: 16px;
     font-weight: 600;
     line-height: 24px;
+}
+
+.popup__size,
+.popup__additive {
+    cursor: pointer;
+    background-color: transparent;
+    font: inherit;
+}
+
+.popup__option-active {
+    border-color: var(--color-border-strong);
+    color: var(--color-text-inverse);
+    background-color: var(--color-border-strong);
+}
+
+.popup__option-active .popup__option-label {
+    background-color: var(--color-bg-primary);
 }
 
 @media(max-width:768px) {
@@ -1128,6 +1167,22 @@ html[data-theme="dark"] .popup__cost-info img {
     .hamburger_open {
         gap: 0px;
         padding: 20px;
+    }
+}
+
+@media(max-width:767px) {
+    .popup {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .popup__content {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .popup__image-container {
+        display: none;
     }
 }
 

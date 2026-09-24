@@ -3,26 +3,39 @@ const mobileMenu = document.querySelector('.burger__menu__list');
 const mobileMenuItems = document.querySelectorAll('.burger__menu__list-item');
 const hamburgerLines = document.querySelectorAll('.hamburger__line');
 
+const closeMobileMenu = () => {
+    mobileMenu.classList.remove('menu_open');
+    hamburgerLines[0].classList.remove('hamburger__line-one-active');
+    hamburgerLines[1].classList.remove('hamburger__line-two-active');
+    menuBtn.classList.remove('hamburger_open');
+    document.body.classList.remove('scroll-lock');
+}
+
 menuBtn.addEventListener('click', () => {
     mobileMenu.classList.toggle('menu_open');
     hamburgerLines[0].classList.toggle('hamburger__line-one-active');
     hamburgerLines[1].classList.toggle('hamburger__line-two-active');
     menuBtn.classList.toggle('hamburger_open');
+    document.body.classList.toggle('scroll-lock');
 })
 
 mobileMenuItems.forEach(element => {
     element.addEventListener('click', () => {
-        mobileMenu.classList.remove('menu_open');
-        hamburgerLines[0].classList.remove('hamburger__line-one-active');
-        hamburgerLines[1].classList.remove('hamburger__line-two-active');
-        menuBtn.classList.remove('hamburger_open');
+        closeMobileMenu();
     })
+});
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && mobileMenu.classList.contains('menu_open')) {
+        closeMobileMenu();
+    }
 });
 
 
 //category
 let data;
 const categoryContent = document.querySelector('.category__content');
+const categoryTabs = document.querySelectorAll('.main-offer__content-item-tab, .main-offer__content-item-tab-active');
 
 const jsonFilePath = `./products.json`;
 
@@ -35,7 +48,6 @@ async function loadJSON() {
         }
 
         data = await response.json();
-        //console.log(data);
         loadData(data, 'coffee');
     } catch (error) {
         console.error(error.message);
@@ -44,14 +56,35 @@ async function loadJSON() {
 
 loadJSON();
 
+const updateActiveCategoryTab = (activeTab) => {
+    categoryTabs.forEach((tab) => {
+        const isActive = tab === activeTab;
+        const tabImage = tab.querySelector('.main-offer__content-item-tab-image, .main-offer__content-item-tab-image-active');
+        const tabText = tab.querySelector('.main-offer__content-item-text, .main-offer__content-item-text-active');
+
+        tab.classList.toggle('main-offer__content-item-tab-active', isActive);
+        tab.classList.toggle('main-offer__content-item-tab', !isActive);
+        tabImage.classList.toggle('main-offer__content-item-tab-image-active', isActive);
+        tabImage.classList.toggle('main-offer__content-item-tab-image', !isActive);
+        tabText.classList.toggle('main-offer__content-item-text-active', isActive);
+        tabText.classList.toggle('main-offer__content-item-text', !isActive);
+    });
+};
+
+const resetCategoryCardsView = () => {
+    categoryContent.classList.add('category__content-hide');
+    refreshButton.style.display = '';
+};
+
 const loadData = (data, categoryItems) => {
     categoryContent.innerHTML = '';
     let i = 1;
-    for (items of data) {
+    for (const [index, items] of data.entries()) {
         if (items.category === categoryItems) {
-            //console.log(items.name);
             const card = document.createElement('div');
             card.classList.add('category__content-item');
+            card.dataset.productIndex = index;
+            card.dataset.productImage = `./images/${categoryItems}-${i}.jpg`;
             const image = document.createElement('img');
             image.classList.add('category__content-item-image');
             image.src = `./images/${categoryItems}-${i}.jpg`;
@@ -80,7 +113,6 @@ const loadData = (data, categoryItems) => {
             card.append(image);
             card.append(cardText);
 
-            //console.log(card);
             categoryContent.append(card);
         }
     }
@@ -90,24 +122,27 @@ const loadData = (data, categoryItems) => {
 getCategoryItems();
 //coffee
 const menuCoffee = document.querySelector('.coffee');
-//console.log(menuCoffee);
 menuCoffee.addEventListener('click', () => {
+    updateActiveCategoryTab(menuCoffee);
+    resetCategoryCardsView();
     loadData(data, 'coffee');
     getCategoryItems();
 })
 
 //tea
 const menuTea = document.querySelector('.tea');
-//console.log(menuTea);
 menuTea.addEventListener('click', () => {
+    updateActiveCategoryTab(menuTea);
+    resetCategoryCardsView();
     loadData(data, 'tea');
     getCategoryItems();
 })
 
 //dessert
 const menuDessert = document.querySelector('.dessert');
-//console.log(menuDessert);
 menuDessert.addEventListener('click', () => {
+    updateActiveCategoryTab(menuDessert);
+    resetCategoryCardsView();
     loadData(data, 'dessert');
     getCategoryItems();
 })
@@ -126,61 +161,153 @@ refreshButton.addEventListener('click', () => {
 const popupButton = document.querySelector('.popup__close');
 const popup = document.querySelector('.popup');
 
-popupButton.addEventListener('click', () => {
+const openPopup = () => {
+    popup.style.display = 'block';
+    document.body.classList.add('scroll-lock');
+};
+
+const closePopup = () => {
     popup.style.display = 'none';
+    document.body.classList.remove('scroll-lock');
+};
+
+popupButton.addEventListener('click', () => {
+    closePopup();
 })
 
-//popup category items
-function getCategoryItems () {
-    setTimeout(() =>{
-        const categoryContentItems = document.querySelectorAll('.category__content-item');
-        //console.log(categoryContentItems);
-        categoryContentItems.forEach(element => {
-            element.addEventListener('click', (event) => {
-                popup.style.display = 'block';
-                //console.log('click');
-                const clickedElement = event.currentTarget;
-                const elementClasses = clickedElement.classList;
-                console.log(clickedElement);
-                console.log(elementClasses);
-                //тут нужно собирать попап и наполнять его данными нужен метод по вытягиванию данных с джейсона
-                console.log(data);
-                const itemTitle = clickedElement.querySelector('.category__content-item-title');
-                const itemImage = clickedElement.querySelector('.category__content-item-image');
-                data.forEach(element => {
-                    if(element.name === itemTitle.textContent){
-                        console.log(element.name);
-                        console.log(element.price);
-                        console.log(itemImage.src);
+popup.addEventListener('click', (event) => {
+    if (event.target === popup) {
+        closePopup();
+    }
+})
 
-                        //собираем попап
-                        const popupСontent = document.querySelector('.popup__content');
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && popup.style.display === 'block') {
+        closePopup();
+    }
+});
 
-                        const popupImageContainer = document.querySelector('.popup__image-container');
-                        popupImageContainer.innerHTML = '';
-                        const popupTitle = document.querySelector('.popup__title');
-                        popupTitle.innerHTML = '';
-                        const popupText = document.querySelector('.popup__text');
-                        popupText.innerHTML = '';
-                        const popupCost = document.querySelector('.popup__cost');
-                        popupCost.innerHTML = '';
+const popupImageContainer = document.querySelector('.popup__image-container');
+const popupTitle = document.querySelector('.popup__title');
+const popupText = document.querySelector('.popup__text');
+const popupCost = document.querySelector('.popup__cost');
+const popupSizes = document.querySelector('.popup__sizes');
+const popupAdditives = document.querySelector('.popup__additives');
 
-                        const image = document.createElement('img');
-                        image.classList.add('popup__image');
-                        image.src = itemImage.src;
-                        image.alt = items.name;
+let currentProduct = null;
+let selectedSize = 's';
+let selectedAdditives = [];
 
-                        const description = document.querySelector('.popup__description');
+const formatPrice = (price) => `$${price.toFixed(2)}`;
 
-                        popupImageContainer.append(image);
-                        popupTitle.textContent = element.name;
-                        popupText.textContent = element.description;
-                        popupCost.textContent = '$' + element.price;
+const updatePopupCost = () => {
+    if (!currentProduct) {
+        return;
+    }
 
-                    }
-                });
-            })
-        });
-    }, 100);
+    const basePrice = Number(currentProduct.price);
+    const sizePrice = Number(currentProduct.sizes[selectedSize]['add-price']);
+    const additivesPrice = selectedAdditives.reduce((sum, additiveIndex) => {
+        return sum + Number(currentProduct.additives[additiveIndex]['add-price']);
+    }, 0);
+
+    popupCost.textContent = formatPrice(basePrice + sizePrice + additivesPrice);
 };
+
+const createPopupOption = (label, text, className) => {
+    const option = document.createElement('button');
+    option.classList.add(className);
+    option.type = 'button';
+
+    const optionLabel = document.createElement('span');
+    optionLabel.classList.add('popup__option-label');
+    optionLabel.textContent = label;
+
+    option.append(optionLabel, text);
+
+    return option;
+};
+
+const renderPopupSizes = (product) => {
+    popupSizes.innerHTML = '';
+
+    Object.entries(product.sizes).forEach(([sizeKey, sizeValue]) => {
+        const sizeOption = createPopupOption(sizeKey.toUpperCase(), sizeValue.size, 'popup__size');
+        sizeOption.dataset.size = sizeKey;
+        sizeOption.classList.toggle('popup__option-active', sizeKey === selectedSize);
+
+        sizeOption.addEventListener('click', () => {
+            selectedSize = sizeKey;
+            popupSizes.querySelectorAll('.popup__size').forEach((size) => {
+                size.classList.toggle('popup__option-active', size.dataset.size === selectedSize);
+            });
+            updatePopupCost();
+        });
+
+        popupSizes.append(sizeOption);
+    });
+};
+
+const renderPopupAdditives = (product) => {
+    popupAdditives.innerHTML = '';
+
+    product.additives.forEach((additive, index) => {
+        const additiveOption = createPopupOption(String(index + 1), additive.name, 'popup__additive');
+        additiveOption.dataset.additiveIndex = index;
+
+        additiveOption.addEventListener('click', () => {
+            const isSelected = selectedAdditives.includes(index);
+
+            selectedAdditives = isSelected
+                ? selectedAdditives.filter((additiveIndex) => additiveIndex !== index)
+                : [...selectedAdditives, index];
+
+            additiveOption.classList.toggle('popup__option-active', !isSelected);
+            updatePopupCost();
+        });
+
+        popupAdditives.append(additiveOption);
+    });
+};
+
+const renderPopup = (product, imageSrc) => {
+    currentProduct = product;
+    selectedSize = 's';
+    selectedAdditives = [];
+
+    popupImageContainer.innerHTML = '';
+
+    const image = document.createElement('img');
+    image.classList.add('popup__image');
+    image.src = imageSrc;
+    image.alt = product.name;
+
+    popupImageContainer.append(image);
+    popupTitle.textContent = product.name;
+    popupText.textContent = product.description;
+
+    renderPopupSizes(product);
+    renderPopupAdditives(product);
+    updatePopupCost();
+};
+
+categoryContent.addEventListener('click', (event) => {
+    const card = event.target.closest('.category__content-item');
+
+    if (!card) {
+        return;
+    }
+
+    const product = data[Number(card.dataset.productIndex)];
+
+    if (!product) {
+        return;
+    }
+
+    renderPopup(product, card.dataset.productImage);
+    openPopup();
+});
+
+//popup category items
+function getCategoryItems () {};
 

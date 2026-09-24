@@ -3,20 +3,32 @@ const mobileMenu = document.querySelector('.burger__menu__list');
 const mobileMenuItems = document.querySelectorAll('.burger__menu__list-item');
 const hamburgerLines = document.querySelectorAll('.hamburger__line');
 
+const closeMobileMenu = () => {
+    mobileMenu.classList.remove('menu_open');
+    hamburgerLines[0].classList.remove('hamburger__line-one-active');
+    hamburgerLines[1].classList.remove('hamburger__line-two-active');
+    menuBtn.classList.remove('hamburger_open');
+    document.body.classList.remove('scroll-lock');
+}
+
 menuBtn.addEventListener('click', () => {
     mobileMenu.classList.toggle('menu_open');
     hamburgerLines[0].classList.toggle('hamburger__line-one-active');
     hamburgerLines[1].classList.toggle('hamburger__line-two-active');
     menuBtn.classList.toggle('hamburger_open');
+    document.body.classList.toggle('scroll-lock');
 })
 
 mobileMenuItems.forEach(element => {
     element.addEventListener('click', () => {
-        mobileMenu.classList.remove('menu_open');
-        hamburgerLines[0].classList.remove('hamburger__line-one-active');
-        hamburgerLines[1].classList.remove('hamburger__line-two-active');
-        menuBtn.classList.remove('hamburger_open');
+        closeMobileMenu();
     })
+});
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && mobileMenu.classList.contains('menu_open')) {
+        closeMobileMenu();
+    }
 });
 
 //slider
